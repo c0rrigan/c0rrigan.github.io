@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, https://unpkg.com/initial-scale=1.0">
+        <meta charset="UTF-8">
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script> 
+        <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script> 
+        <title>Hola</title>
+    </head>
+    <body>
+        <!-- <h1>Hola mundo en React</h1> -->
+        <section id="reactID"></section>
+        <script type="text/babel">
+            const sq = (x) => x * x
+            const Welcome = (props) => {
+                return (
+
+                    <h1>Hola, {props.name}</h1>
+                )
+            }
+            const DOM_NODE = document.getElementById("reactID")
+            // const app = React.createElement(
+            //             "p",
+            //             {
+            //                 children: "Hola desde React",
+            //                 alt: "Bienvenida",
+            //                 style: {
+            //                     background : "blue",
+            //                     fontSize : "2rem"}
+            //             })
+            const appStyle = {
+                background : 'linear-gradient(to left, palegreen, royalblue)',
+                fontFamily : 'sans-serif',
+                fontStyle : 'normal'
+            };
+
+            const Counter = (props) => {
+               const [counter, setCounter] = React.useState(0);
+               return (
+                    <div style={{color:'white'}}>
+                        <h1>Counter is {counter}</h1>
+                        <button onClick={() => setCounter(counter + 1)}>+1</button>
+                        <button onClick={() => setCounter(counter - 1)}>-1</button>
+                    </div>
+               )
+            };
+            const App = (props) => (
+                    <React.StrictMode>
+                        <div style={appStyle}> 
+                            <h1>Aplicación en react</h1>
+                            <Welcome name = {props.name}/>
+                            <Counter/>
+                        </div>
+                    </React.StrictMode>)
+            ReactDOM.render(<App name="Sebas"/>, DOM_NODE)
+        </script>
+    </body>
+</html>
